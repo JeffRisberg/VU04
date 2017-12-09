@@ -15,7 +15,7 @@ export const routes = [
   },
   {
     path: '/dataTable',
-    name: 'DataTable',
+    name: 'Data Table',
     component: DataTable
   }
 ]
