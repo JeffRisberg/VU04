@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Main from '@/pages/Main'
+import Main from './pages/Main'
 
 describe('Main.vue', () => {
   it('should render correct contents', () => {
