@@ -1,6 +1,6 @@
 import Main from './pages/Main.vue'
 import Chart from './pages/Chart.vue'
-import DataTable from './pages/DataTable.vue'
+import Summary from './pages/Summary.vue'
 
 export const routes = [
   {
@@ -14,9 +14,8 @@ export const routes = [
     component: Chart
   },
   {
-    path: '/dataTable',
-    name: 'Data Table',
-    component: DataTable
+    path: '/summary',
+    name: 'Summary',
+    component: Summary
   }
 ]
-

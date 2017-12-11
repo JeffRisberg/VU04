@@ -1,16 +1,16 @@
 <template>
-  <div class="main">
-    <h2>Welcome to VU04</h2>
-    <indicator title="Temperature" value="98.6" />
+  <div class="summary">
+    <h2>Summary</h2>
+    <data-table title="Sample1" />
   </div>
 </template>
 
 <script>
-  import Indicator from '../components/Indicator.vue'
+  import DataTable from '../components/DataTable.vue'
 
   export default {
-    name: 'Main',
-    components: { Indicator },
+    name: 'Summary',
+    components: { DataTable },
     data () {
       return {}
     }

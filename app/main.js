@@ -9,7 +9,14 @@ Vue.use(VueRouter)
 
 export const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    }
+  }
 })
 
 const myApp = new Vue({

@@ -6,15 +6,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <router-link to="/home">Home</router-link>
+            <router-link to="/" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/chart">Chart</router-link>
+            <router-link to="/chart" class="nav-link">Chart</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/dataTable">Data Table</router-link>
+            <router-link to="/summary" class="nav-link">Summary</router-link>
           </li>
         </ul>
       </div>

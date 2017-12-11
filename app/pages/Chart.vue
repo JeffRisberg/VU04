@@ -1,7 +1,7 @@
 <template>
   <div class="chart">
-    <h1>Chart</h1>
-    <line-chart />
+    <h2>Chart</h2>
+    <line-chart/>
   </div>
 </template>
 
@@ -10,10 +10,9 @@
 
   export default {
     name: 'Chart',
-    components: [LineChart],
+    components: { LineChart },
     data () {
-      return {
-      }
+      return {}
     }
   }
 </script>
@@ -23,14 +22,17 @@
   h1, h2 {
     font-weight: normal;
   }
+
   ul {
     list-style-type: none;
     padding: 0;
   }
+
   li {
     display: inline-block;
     margin: 0 10px;
   }
+
   a {
     color: #42b983;
   }

@@ -6,6 +6,7 @@
 
 <script>
   export default {
+    name: 'DataTable',
     props: ['title']
   }
 </script>

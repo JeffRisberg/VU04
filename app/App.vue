@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="container">
     <app-header></app-header>
-    <indicator title="A" value="456" />
     <router-view/>
     <app-footer></app-footer>
   </div>
@@ -10,10 +9,9 @@
 <script>
   import AppHeader from './components/AppHeader.vue'
   import AppFooter from './components/AppFooter.vue'
-  import Indicator from './components/Indicator.vue'
 
   export default {
-    components: { AppHeader, AppFooter, Indicator }
+    components: { AppHeader, AppFooter }
   }
 </script>
 
