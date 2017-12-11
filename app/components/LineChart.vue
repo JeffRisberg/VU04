@@ -4,7 +4,7 @@
   const brandInfo = '#63c2de'
   const datasets = [
     {
-      label: 'My First dataset',
+      label: 'Temperature',
       backgroundColor: brandInfo,
       borderColor: 'rgba(255,255,255,.55)',
       data: [1, 18, 9, 17, 34, 22, 11]
@@ -34,7 +34,6 @@
               fontSize: 2,
               fontColor: 'transparent'
             }
-
           }],
           yAxes: [{
             display: false,
