@@ -1,9 +1,11 @@
-var path = require('path')
-var globSync = require('glob').sync
-var express = require('express')
-var app = express()
+const path = require('path')
+const express = require('express')
+const app = express()
 
-var mocks = globSync('./mocks/**/*.js', {cwd: __dirname}).map(require)
+const nedb = require('nedb')
+
+const incidents = require('./modules/incidents')
+const userState = require('./modules/userState')
 
 const PATH_STYLES = path.resolve(__dirname, '../app/styles')
 const PATH_DIST = path.resolve(__dirname, '../dist')
@@ -15,18 +17,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../app/index.html'))
 })
 
-var nedb = require('nedb')
-
 /* eslint new-cap:off */
 app.incidentsDB = new nedb({filename: 'db-content/incidents', autoload: true})
 app.userStateDB = new nedb({filename: 'db-content/userState', autoload: true})
 
-mocks.forEach(function (route) {
-  route(app)
-})
+incidents(app)
+userState(app)
 
-var server = app.listen(process.env.PORT || 3000, () => {
-  var port = server.address().port
+const server = app.listen(process.env.PORT || 3000, () => {
+  const port = server.address().port
 
   console.log('Server is listening at %s', port)
 })
