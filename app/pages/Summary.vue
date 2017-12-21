@@ -2,16 +2,18 @@
   <table class="summary">
     <tr>
       <td>
-        <nav class="sidebar-nav">
-          <ul class="nav">
-            <SidebarNavItem>
-              <SidebarNavLink url="/summary/summary1" name="S1"/>
-            </SidebarNavItem>
-            <SidebarNavItem>
-              <SidebarNavLink url="/summary/summary2" name="S2"/>
-            </SidebarNavItem>
-          </ul>
-        </nav>
+        <div class="sidebar">
+          <nav class="sidebar-nav">
+            <ul class="nav">
+              <SidebarNavItem>
+                <SidebarNavLink url="/summary/summary1" name="S1"/>
+              </SidebarNavItem>
+              <SidebarNavItem>
+                <SidebarNavLink url="/summary/summary2" name="S2"/>
+              </SidebarNavItem>
+            </ul>
+          </nav>
+        </div>
       <td/>
       <td>
         <router-view></router-view>

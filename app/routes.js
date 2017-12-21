@@ -24,6 +24,7 @@ export const routes = [
       },
       {
         path: '/summary',
+        redirect: '/summary/summary1',
         name: 'Summary',
         component: Summary,
         children: [
