@@ -1,27 +1,23 @@
 <template>
-  <div id="app" class="container">
-    <app-header></app-header>
-    <router-view/>
-    <app-footer></app-footer>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
-  import AppHeader from './components/AppHeader.vue'
-  import AppFooter from './components/AppFooter.vue'
+  import './styles/main.scss'
 
   export default {
-    components: { AppHeader, AppFooter }
+    name: 'app'
   }
 </script>
 
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+  /* Import Font Awesome Icons Set */
+  $fa-font-path: '~font-awesome/fonts/';
+  @import '~font-awesome/css/font-awesome.min.css';
+  /* Import Simple Line Icons Set */
+  $simple-line-font-path: '~simple-line-icons/fonts/';
+  @import '~simple-line-icons/css/simple-line-icons.css';
+  /* Import Bootstrap Vue Styles */
+  @import '~bootstrap-vue/dist/bootstrap-vue.css';
 </style>
+

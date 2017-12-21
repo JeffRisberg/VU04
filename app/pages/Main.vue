@@ -1,7 +1,17 @@
 <template>
   <div class="main">
-    <h2>Welcome to VU04</h2>
-    <indicator title="Temperature" value="98.6" />
+    <h2>Two-level menu test</h2>
+    <div class="row">
+      <div class="col-4">
+        <indicator title="Requests" value="7,345"/>
+      </div>
+      <div class="col-4">
+        <indicator title="Requests Deflected" value="3,451"/>
+      </div>
+      <div class="col-4">
+        <indicator title="Cost Savings" value="$345,678"/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,7 +21,7 @@
   export default {
     name: 'Main',
     components: { Indicator },
-    data () {
+    data() {
       return {}
     }
   }

@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
 
+@import './layout.scss';
+
 html, #app {
   height: 100%;
 }
@@ -20,4 +22,9 @@ body {
   background-color: #30414D;
   color: #767676;
   padding: 35px 25px 25px 25px;
+}
+
+.sidebar {
+  width: 100px;
+  background: yellow;
 }
