@@ -15,15 +15,6 @@ body {
   position: relative;
 }
 
-#toolbar {
-  float: left;
-  width: 80px;
-  height: 100%;
-  background-color: #30414D;
-  color: #767676;
-  padding: 35px 25px 25px 25px;
-}
-
 .sidebar {
   width: 100px;
   background: lightblue;
@@ -33,6 +24,6 @@ body {
   width: 100%;
 }
 
-.nav-link.router-link-active {
+.router-link-active {
   background: gray;
 }

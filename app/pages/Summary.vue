@@ -1,17 +1,33 @@
 <template>
-  <div class="summary">
-    <h2>Summary</h2>
-    <data-table title="Sample1" />
-  </div>
+  <table class="summary">
+    <tr>
+      <td>
+        <nav class="sidebar-nav">
+          <ul class="nav">
+            <SidebarNavItem>
+              <SidebarNavLink url="/summary/summary1" name="S1"/>
+            </SidebarNavItem>
+            <SidebarNavItem>
+              <SidebarNavLink url="/summary/summary2" name="S2"/>
+            </SidebarNavItem>
+          </ul>
+        </nav>
+      <td/>
+      <td>
+        <router-view></router-view>
+      </td>
+    </tr>
+  </table>
 </template>
 
 <script>
-  import DataTable from '../components/DataTable.vue'
+  import SidebarNavItem from '../components/SidebarNavItem.vue'
+  import SidebarNavLink from '../components/SidebarNavLink.vue'
 
   export default {
     name: 'Summary',
-    components: { DataTable },
-    data () {
+    components: { SidebarNavItem, SidebarNavLink },
+    data() {
       return {}
     }
   }
