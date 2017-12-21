@@ -26,5 +26,13 @@ body {
 
 .sidebar {
   width: 100px;
-  background: yellow;
+  background: lightblue;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.nav-link.router-link-active {
+  background: gray;
 }

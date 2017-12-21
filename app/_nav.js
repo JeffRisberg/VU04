@@ -14,11 +14,6 @@ export default {
       name: 'Summary',
       url: '/summary',
       icon: 'fa fa-paper-plane'
-    },
-    {
-      name: 'Extra',
-      url: '/extra',
-      icon: 'fa fa-bolt'
     }
   ]
 }

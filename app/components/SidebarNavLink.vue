@@ -1,12 +1,12 @@
 <template>
-  <div v-if="isExternalLink">
+  <div v-if="isExternalLink" style="width: 100%">
     <a :href="url" :class="classList">
       <i :class="icon"></i> {{name}}
       <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
     </a>
   </div>
   <div v-else>
-    <router-link :to="url" :class="classList">
+    <router-link :to="url" :class="classList" style="width: 100%">
       <i :class="icon"></i> {{name}}
       <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
     </router-link>
