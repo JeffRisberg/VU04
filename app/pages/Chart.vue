@@ -5,7 +5,8 @@
         <h2>Chart</h2>
       </b-col>
       <b-col sm="2">
-        <chart-type-selector/>
+        <chart-type-selector :chartType="chartType"/>
+        {{chartType}}
       </b-col>
     </b-row>
     <super-chart :type="chartType"/>
@@ -21,7 +22,7 @@
     components: { ChartTypeSelector, SuperChart },
     data () {
       return {
-        chartType: 'bar'
+        chartType: 'Bar'
       }
     }
   }

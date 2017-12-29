@@ -3,18 +3,15 @@
     <b-form-select
       :plain="true"
       v-model="chartType"
-      :options="['Bar', 'Column','Line']">
+      :options="['Bar', 'Column', 'Line']">
     </b-form-select>
+    {{chartType}}
   </b-form-fieldset>
 </template>
 
 <script>
   export default {
     name: 'ChartTypeSelector',
-    data: function () {
-      return {
-        chartType: 'Bar'
-      }
-    }
+    props: [ 'chartType' ]
   }
 </script>
