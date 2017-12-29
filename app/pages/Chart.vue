@@ -27,7 +27,7 @@
     // },
     data: function () {
       return {
-        chartType: 'line'
+        chartType: 'bar'
       }
     },
     methods: {

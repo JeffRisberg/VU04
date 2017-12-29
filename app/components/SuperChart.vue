@@ -126,6 +126,10 @@
                 this.renderChart(this.chartData, this.options)
               }
             } else {
+              console.log('watch found a change ' + this.type)
+              if (this.$data._chart) {
+                this.$data._chart.destroy()
+              }
               this.renderChart(this.chartData, this.options)
             }
           }
@@ -136,7 +140,7 @@
         let chartOptions = this.defaultOptions // mergeOptions(this.defaultOptions, options)
         this.$data._chart = new Chart(
           this.$refs.canvas.getContext('2d'), {
-            type: 'bar',
+            type: this.type,
             data: data,
             options: chartOptions,
             plugins: this.$data._plugins
