@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import Indicator from '../components/Indicator.vue'
+  import Indicator from '../aiseraComponents/Indicator.vue'
 
   export default {
     name: 'Main',

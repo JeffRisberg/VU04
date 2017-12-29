@@ -2,11 +2,10 @@
   <b-form-fieldset>
     <b-form-select
       :plain="true"
-      v-model="localChartType"
-      :options="[{text: 'Bar', value: 'bar'},{text: 'Column', value: 'horizontalBar'}, {text: 'Line', value: 'line'}]"
-      v-on:input="updateValue(localChartType)">
+      v-model="myChartType"
+      :options="[{text: 'Bar', value: 'horizontalBar'},{text: 'Column', value: 'bar'}, {text: 'Line', value: 'line'}]"
+      v-on:input="updateChartType(myChartType)">
     </b-form-select>
-    {{chartType}}
   </b-form-fieldset>
 </template>
 
@@ -16,11 +15,11 @@
     props: [ 'chartType' ],
     data: function () {
       return {
-        localChartType: this.chartType
+        myChartType: this.chartType
       }
     },
     methods: {
-      updateValue: function (chartType) {
+      updateChartType: function (chartType) {
         this.$emit('deltaChartType', chartType)
       }
     }

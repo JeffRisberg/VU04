@@ -6,35 +6,39 @@
       </b-col>
       <b-col sm="2">
         <chart-type-selector :chartType="chartType"
-                             v-on:deltaChartType="saveChartType"
-          />
-        {{chartType}}
+                             v-on:deltaChartType="saveChartType" />
       </b-col>
     </b-row>
-    <super-chart :type="chartType"/>
+    <super-chart :chartType="chartType" :chartData="chartData" />
   </div>
 </template>
 
 <script>
-  import ChartTypeSelector from '../components/ChartTypeSelector.vue'
-  import SuperChart from '../components/SuperChart.vue'
+  import ChartTypeSelector from '../aiseraComponents/ChartTypeSelector.vue'
+  import SuperChart from '../aiseraComponents/TypedChart.vue'
 
   export default {
     name: 'Chart',
     components: { ChartTypeSelector, SuperChart },
-    // mounted: function () {
-    //  this.localChartType = 'line'
-    // },
     data: function () {
       return {
-        chartType: 'bar'
+        chartType: 'bar',
+        chartData: {
+          labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July' ],
+          datasets: [
+            {
+              label: 'Temperature',
+              backgroundColor: '#63c2de',
+              borderColor: 'rgba(255,255,255,.55)',
+              data: [ 1, 18, 9, 17, 34, 22, 11 ]
+            }
+          ]
+        }
       }
     },
     methods: {
       saveChartType: function (arg) {
-        console.log('deltaChartType=' + arg)
         this.chartType = arg;
-        this.$forceUpdate()
       }
     }
   }
