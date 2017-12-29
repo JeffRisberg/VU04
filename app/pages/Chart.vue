@@ -1,26 +1,28 @@
 <template>
   <div class="chart">
     <b-row class="mb-4" style="background: #eee;">
-      <b-col col="10">
+      <b-col sm="10">
         <h2>Chart</h2>
       </b-col>
-      <b-col col="2">
+      <b-col sm="2">
         <chart-type-selector/>
       </b-col>
     </b-row>
-    <line-chart/>
+    <super-chart :type="chartType"/>
   </div>
 </template>
 
 <script>
   import ChartTypeSelector from '../components/ChartTypeSelector.vue'
-  import LineChart from '../components/LineChart.vue'
+  import SuperChart from '../components/SuperChart.vue'
 
   export default {
     name: 'Chart',
-    components: { ChartTypeSelector, LineChart },
-    data() {
-      return {}
+    components: { ChartTypeSelector, SuperChart },
+    data () {
+      return {
+        chartType: 'bar'
+      }
     }
   }
 </script>
