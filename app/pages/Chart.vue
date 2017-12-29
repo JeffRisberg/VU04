@@ -5,7 +5,9 @@
         <h2>Chart</h2>
       </b-col>
       <b-col sm="2">
-        <chart-type-selector :chartType="chartType"/>
+        <chart-type-selector :chartType="chartType"
+                             v-on:deltaChartType="saveChartType"
+          />
         {{chartType}}
       </b-col>
     </b-row>
@@ -20,9 +22,19 @@
   export default {
     name: 'Chart',
     components: { ChartTypeSelector, SuperChart },
-    data () {
+    // mounted: function () {
+    //  this.localChartType = 'line'
+    // },
+    data: function () {
       return {
-        chartType: 'Bar'
+        chartType: 'line'
+      }
+    },
+    methods: {
+      saveChartType: function (arg) {
+        console.log('deltaChartType=' + arg)
+        this.chartType = arg;
+        this.$forceUpdate()
       }
     }
   }
