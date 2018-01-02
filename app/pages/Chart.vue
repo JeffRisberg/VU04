@@ -9,17 +9,17 @@
                              v-on:deltaChartType="saveChartType" />
       </b-col>
     </b-row>
-    <super-chart :chartType="chartType" :chartData="chartData" />
+    <typed-chart :chartType="chartType" :chartData="chartData" />
   </div>
 </template>
 
 <script>
   import ChartTypeSelector from '../aiseraComponents/ChartTypeSelector.vue'
-  import SuperChart from '../aiseraComponents/TypedChart.vue'
+  import TypedChart from '../aiseraComponents/TypedChart.vue'
 
   export default {
     name: 'Chart',
-    components: { ChartTypeSelector, SuperChart },
+    components: { ChartTypeSelector, TypedChart },
     data: function () {
       return {
         chartType: 'bar',
