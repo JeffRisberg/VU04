@@ -34,8 +34,10 @@
           legend: {
             display: false
           },
+          onClick: this.clickChart,
           scales: {
             yAxes: [ {
+              stacked: true,
               ticks: {
                 beginAtZero: true
               },
@@ -44,11 +46,13 @@
               }
             } ],
             xAxes: [ {
+              stacked: true,
+              ticks: {
+                beginAtZero: true
+              },
               gridLines: {
                 display: false
-              },
-              categoryPercentage: 0.5,
-              barPercentage: 0.2
+              }
             } ]
           }
         }
@@ -68,10 +72,25 @@
             plugins: this.$data._plugins
           }
         )
+      },
+      clickChart: function (evt) {
+        const activePoints = this.$data._chart.getElementsAtEvent(evt)
+        if (activePoints.length > 0) {
+          this.$emit('clickChart', activePoints[ 0 ]._index)
+        }
       }
     },
     watch: {
       'chartType':
+        {
+          handler (newData, oldData) {
+            if (this.$data._chart) {
+              this.$data._chart.destroy()
+            }
+            this.renderChart(this.chartData, this.options)
+          }
+        },
+      'chartData':
         {
           handler (newData, oldData) {
             if (this.$data._chart) {

@@ -6,10 +6,11 @@
       </b-col>
       <b-col sm="2">
         <chart-type-selector :chartType="chartType"
-                             v-on:deltaChartType="saveChartType" />
+                             v-on:deltaChartType="saveChartType"/>
       </b-col>
     </b-row>
-    <typed-chart :chartType="chartType" :chartData="chartData" />
+    <typed-chart :chartType="chartType" :chartData="chartData"
+                 v-on:clickChart="clickChart"/>
   </div>
 </template>
 
@@ -31,14 +32,23 @@
               backgroundColor: '#63c2de',
               borderColor: 'rgba(255,255,255,.55)',
               data: [ 1, 18, 9, 17, 34, 22, 11 ]
+            },
+            {
+              label: 'Purchases',
+              backgroundColor: '#ee7722',
+              borderColor: 'rgba(255,255,255,.55)',
+              data: [ 31, 28, 29, 7, 12, 18, 5 ]
             }
           ]
         }
       }
     },
     methods: {
-      saveChartType: function (arg) {
-        this.chartType = arg;
+      saveChartType: function (chartType) {
+        this.chartType = chartType;
+      },
+      clickChart: function (index) {
+        console.log('click on ' + index)
       }
     }
   }
