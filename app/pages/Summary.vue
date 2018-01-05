@@ -29,7 +29,7 @@
   export default {
     name: 'Summary',
     components: { SidebarNavItem, SidebarNavLink },
-    data() {
+    data () {
       return {}
     }
   }

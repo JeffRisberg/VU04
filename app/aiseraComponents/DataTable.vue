@@ -51,14 +51,16 @@
         </b-card>
       </template>
     </b-table>
-    <nav>
-      <b-pagination :total-rows="getRowCount(dataSet)"
-                    :per-page="perPage"
-                    v-model="currentPage"
-                    prev-text="Prev"
-                    next-text="Next"
-                    hide-goto-end-buttons/>
-    </nav>
+    <div v-if="paginated">
+      <nav>
+        <b-pagination :total-rows="getRowCount(dataSet)"
+                      :per-page="perPage"
+                      v-model="currentPage"
+                      prev-text="Prev"
+                      next-text="Next"
+                      hide-goto-end-buttons/>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -71,6 +73,10 @@
       },
       dataSet: {
         type: Array
+      },
+      paginated: {
+        type: Boolean,
+        default: true
       },
       hover: {
         type: Boolean,

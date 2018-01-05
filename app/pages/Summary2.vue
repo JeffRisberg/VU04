@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'Summary2',
     data () {

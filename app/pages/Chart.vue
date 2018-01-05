@@ -9,22 +9,40 @@
                              v-on:deltaChartType="saveChartType"/>
       </b-col>
     </b-row>
-    <typed-chart :chartType="chartType" :chartData="chartData"
+    <typed-chart :chartType="chartType"
+                 :chartData="chartData"
                  v-on:clickChart="clickChart"/>
+    <b-row class="mb-4" style="background: #eee;">
+      <b-col sm="12">
+        <data-table :fields="tableFields"
+                    :paginated="false"
+                    :dataSet="dataSet"/>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
   import ChartTypeSelector from '../aiseraComponents/ChartTypeSelector.vue'
+  import DataTable from '../aiseraComponents/DataTable.vue'
   import TypedChart from '../aiseraComponents/TypedChart.vue'
 
   export default {
     name: 'Chart',
-    components: { ChartTypeSelector, TypedChart },
+    components: { ChartTypeSelector, DataTable, TypedChart },
     data: function () {
       return {
         chartType: 'bar',
-        chartData: {
+        barIndex: 0,
+        tableFields: [
+          { key: 'name', sortable: true },
+          { key: 'description', sortable: true }
+        ]
+      }
+    },
+    computed: {
+      chartData () {
+        return {
           labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July' ],
           datasets: [
             {
@@ -41,14 +59,48 @@
             }
           ]
         }
+      },
+      dataSet () {
+        if ((this.barIndex % 2) === 0) {
+          return [
+            {
+              name: 'Jack',
+              description: 'Jack from New York'
+            },
+            {
+              name: 'Tom',
+              description: 'Tom from Chicago'
+            },
+            {
+              name: 'Jane',
+              description: 'Jane from Los Angeles'
+            }
+          ]
+        }
+        if ((this.barIndex % 2) === 1) {
+          return [
+            {
+              name: 'Angela',
+              description: 'Angela from Cleveland'
+            },
+            {
+              name: 'Susan',
+              description: 'Susan from Houston'
+            },
+            {
+              name: 'Henry',
+              description: 'Henry from Portland'
+            }
+          ]
+        }
       }
     },
     methods: {
       saveChartType: function (chartType) {
-        this.chartType = chartType;
+        this.chartType = chartType
       },
       clickChart: function (index) {
-        console.log('click on ' + index)
+        this.barIndex = index
       }
     }
   }
