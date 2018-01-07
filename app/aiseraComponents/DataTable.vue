@@ -21,11 +21,24 @@
       <template slot="userName" slot-scope="data">
         {{data.item.inputParams !== undefined ? data.item.inputParams.parameters.userName : ''}}
       </template>
+      <template slot="creation_date" slot-scope="data">
+        {{new Date(data.item.creation_date).toLocaleDateString()}} {{new
+        Date(data.item.creation_date).toLocaleTimeString()}}
+      </template>
+      <template slot="start_time" slot-scope="data">
+        {{new Date(data.item.start_time).toLocaleDateString()}} {{new Date(data.item.start_time).toLocaleTimeString()}}
+      </template>
+      <template slot="startTime" slot-scope="data">
+        {{new Date(data.item.startTime).toLocaleDateString()}} {{new Date(data.item.startTime).toLocaleTimeString()}}
+      </template>
       <template slot="connectorType" slot-scope="data">
-        <img :src="'/static/svg/' + data.item.type + '.svg'" height="30" width="30"/>
+        <img :src="'/static/svg/' + data.item.type.toString().toLowerCase() + '.svg'" height="30" width="30"/>
       </template>
       <template slot="channelType" slot-scope="data">
-        <img :src="'/static/svg/' + data.item.type + '.svg'" height="30" width="30"/>
+        <img :src="'/static/svg/' + data.item.type.toString().toLowerCase() + '.svg'" height="30" width="30"/>
+      </template>
+      <template slot="reqChannelType" slot-scope="data">
+        <img :src="'/static/svg/' + data.item.channelType.toString().toLowerCase() + '.svg'" height="30" width="30"/>
       </template>
       <template slot="connectorEdit" slot-scope="data">
         <router-link :to="'/connectors/' + data.item.id">Edit <i class="fa fa-pencil"></i></router-link>
@@ -33,14 +46,29 @@
       <template slot="channelEdit" slot-scope="data">
         <router-link :to="'/channels/' + data.item.id">Edit <i class="fa fa-pencil"></i></router-link>
       </template>
-      <template slot="show_details" scope="row">
+      <template slot="locationBuilding" slot-scope="data">
+        {{JSON.parse(data.item.location).building_}}
+      </template>
+      <template slot="count" slot-scope="data">
+        {{data.item.count.toLocaleString()}}
+      </template>
+      <template slot="deflected" slot-scope="data">
+        {{data.item.deflected.toLocaleString()}}
+      </template>
+      <template slot="notDeflected" slot-scope="data">
+        {{data.item.notDeflected.toLocaleString()}}
+      </template>
+      <template slot="percentDeflected" slot-scope="data">
+        {{((100.0 * data.item.deflected / (data.item.deflected + data.item.notDeflected))).toFixed(1)}} %
+      </template>
+      <template slot="show_details" slot-scope="row">
         <!-- we use @click.stop here to prevent emitting of a 'row-clicked' event  -->
         <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">
           {{ row.detailsShowing ? 'Hide' : 'Show'}} Content
         </b-button>
         <!-- In some circumstances you may need to use @click.native.stop instead -->
       </template>
-      <template slot="row-details" scope="row">
+      <template slot="row-details" slot-scope="row">
         <b-card>
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-right"><b>Content:</b></b-col>
@@ -114,7 +142,11 @@
               : status === 'New' ? 'danger' : 'primary'
       },
       getRowCount (items) {
-        return items.length
+        if (items !== undefined) {
+          return items.length
+        } else {
+          return 0
+        }
       }
     }
   }

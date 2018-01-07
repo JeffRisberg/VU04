@@ -5,8 +5,12 @@
 
   export default {
     name: 'TypedChart',
-    props: [ 'chartType', 'chartData', 'height' ],
-
+    props: {
+      chartType: { type: String, default: 'Line' },
+      chartData: { type: Array, default: null },
+      displayLegend: { type: Boolean, default: false },
+      height: { type: Number, default: 70 }
+    },
     render: function (createElement) {
       return createElement(
         'div', {
@@ -32,7 +36,7 @@
         defaultOptions: {
           maintainAspectRatio: false,
           legend: {
-            display: false
+            display: this.displayLegend
           },
           onClick: this.clickChart,
           scales: {
