@@ -7,9 +7,9 @@
     name: 'TypedChart',
     props: {
       chartType: { type: String, default: 'Line' },
-      chartData: { type: Array, default: null },
+      chartData: { default: null },
       displayLegend: { type: Boolean, default: false },
-      height: { type: Number, default: 70 }
+      height: { type: String, default: 70 }
     },
     render: function (createElement) {
       return createElement(
@@ -55,7 +55,7 @@
                 beginAtZero: true
               },
               gridLines: {
-                display: false
+                display: true
               }
             } ]
           }
