@@ -4,6 +4,7 @@ import Chart from './pages/Chart.vue'
 import Summary from './pages/Summary.vue'
 import Summary1 from './pages/Summary1.vue'
 import Summary2 from './pages/Summary2.vue'
+import MajorIncident from './pages/MajorIncident.vue'
 
 export const routes = [
   {
@@ -39,6 +40,11 @@ export const routes = [
             component: Summary2
           }
         ]
+      },
+      {
+        path: '/majorIncident',
+        name: 'MajorIncident',
+        component: MajorIncident
       }
     ]
   }

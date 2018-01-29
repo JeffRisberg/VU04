@@ -14,6 +14,11 @@ export default {
       name: 'Summary',
       url: '/summary',
       icon: 'fa fa-paper-plane'
+    },
+    {
+      name: 'Major Incident',
+      url: '/majorIncident',
+      icon: 'fa fa-address-card'
     }
   ]
 }
