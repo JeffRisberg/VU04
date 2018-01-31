@@ -1,89 +1,53 @@
-import fetch from 'isomorphic-fetch';
-import {router} from "../../main.js"
+/* eslint space-before-function-paren:off */
 
 const state = {
-  events: [],
-  event: null
-};
+  userState: {
+    dateRange: 30,
+    minScore: 0,
+    chartType: 'BAR',
+    userId: 1,
+    tenantId: 1
+  }
+}
 
 const mutations = {
-  FETCH_EVENTS(status, events) {
-    state.events = events;
-    // set the wait flag
+  SET_DATERANGE (state, dateRange) {
+    state.userState.dateRange = dateRange
   },
-  SET_EVENT(state, event) {
-    console.log(event);
-    state.event = event;
-    // clear the wait flag
+  SET_MINSCORE (state, minScore) {
+    state.userState.minScore = minScore
   },
-  FETCH_EVENTS_SUCCESS(state) {
-    // clear the wait flag
+  SET_CHARTTYPE (state, chartType) {
+    state.userState.chartType = chartType
+  },
+  SET_USERID (state, userId) {
+    state.userState.userId = userId
+  },
+  SET_TENANTID (state, tenantId) {
+    state.userState.tenantId = tenantId
   }
-};
+}
 
 const getters = {
-  events: state => state.events,
-  event: state => state.event
+  userState: state => state.userState
 }
 
 const actions = {
-  fetchEvents({commit}) {
-    fetch('/api/events', {})
-      .then(response => response.json())
-      .then((json) => {
-        commit('FETCH_EVENTS', json.data);
-      })
+  setDateRange ({ commit }, dateRange) {
+    commit('SET_DATERANGE', dateRange)
   },
-  fetchEvent({commit}, id) {
-    fetch('/api/events/' + id, {})
-      .then(response => response.json())
-      .then((json) => {
-        commit('SET_EVENT', json.data);
-      })
+  setMinScore ({ commit }, minScore) {
+    commit('SET_MINSCORE', minScore)
   },
-  newEvent({commit}, id) {
-    commit('SET_EVENT', {text: "", time: 0, dateUpdated: null, completed: false});
+  setChartType ({ commit }, chartType) {
+    commit('SET_CHARTTYPE', chartType)
   },
-  saveEvent({commit}, event) {
-    fetch('/api/events/' + event.id, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({event: event})
-    })
-      .then(response => response.json())
-      .then((json) => {
-        commit('PERSIST_EVENT_SUCCESS', json.data)
-        router.push({path: '/events'}) // jump to events route
-      })
+  setUserId ({ commit }, userId) {
+    commit('SET_USERID', userId)
   },
-  addEvent({commit}, event) {
-    fetch('/api/events', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({event: event})
-    })
-      .then(response => response.json())
-      .then((json) => {
-        commit('PERSIST_EVENT_SUCCESS', json.data)
-        router.push({path: '/events'}) // jump to events route
-      })
-  },
-  deleteEvent({commit}, event) {
-    fetch('/api/events/' + event.id, {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({event: event})
-    })
-  },
+  setTenantId ({ commit }, tenantId) {
+    commit('SET_TENANTID', tenantId)
+  }
 }
 
 export default {
