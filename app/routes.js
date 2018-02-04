@@ -5,6 +5,7 @@ import Summary from './pages/Summary.vue'
 import Summary1 from './pages/Summary1.vue'
 import Summary2 from './pages/Summary2.vue'
 import MajorIncident from './pages/MajorIncident.vue'
+import IncidentList from './pages/IncidentList.vue'
 
 export const routes = [
   {
@@ -45,6 +46,11 @@ export const routes = [
         path: '/majorIncident',
         name: 'MajorIncident',
         component: MajorIncident
+      },
+      {
+        path: '/incidentList',
+        name: 'IncidentList',
+        component: IncidentList
       }
     ]
   }

@@ -19,6 +19,11 @@ export default {
       name: 'Major Incident',
       url: '/majorIncident',
       icon: 'fa fa-address-card'
+    },
+    {
+      name: 'Incident List',
+      url: '/incidentList',
+      icon: 'fa fa-plug'
     }
   ]
 }
