@@ -18,7 +18,7 @@
     "bootstrap": "4.0.0",
     "bootstrap-vue": "^2.0.0-rc.1",
     "chart.js": "2.7.1",
-    "elasticsearch": "^14.0.0",
+    "elasticsearch": "^14.1.0",
     "font-awesome": "^4.7.0",
     "isomorphic-fetch": "^2.2.1",
     "simple-line-icons": "^2.4.1",
