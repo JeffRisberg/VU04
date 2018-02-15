@@ -2,16 +2,18 @@
   <div class='main'>
     <h2>Form Example</h2>
 
-    <b-row class='mb-4' style='background: #eee;'>
-      <b-col sm='12'>
-        Form goes here
-      </b-col>
-    </b-row>
+    <div class="panel-body">
+      <form>
+        <vue-form-generator :schema="schema" :model="model" :options="formOptions">
+        </vue-form-generator>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
-  import VueFormGenerator from
+  import VueFormGenerator from 'vue-form-generator'
+
   export default {
     name: 'FormExample',
     components: {
