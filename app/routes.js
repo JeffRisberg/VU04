@@ -6,6 +6,7 @@ import Summary1 from './pages/Summary1.vue'
 import Summary2 from './pages/Summary2.vue'
 import MajorIncident from './pages/MajorIncident.vue'
 import IncidentList from './pages/IncidentList.vue'
+import FormExample from './pages/FormExample.vue'
 
 export const routes = [
   {
@@ -51,6 +52,11 @@ export const routes = [
         path: '/incidentList',
         name: 'IncidentList',
         component: IncidentList
+      },
+      {
+        path: '/formExample',
+        name: 'FormExample',
+        component: FormExample
       }
     ]
   }

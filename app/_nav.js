@@ -24,6 +24,11 @@ export default {
       name: 'Incident List',
       url: '/incidentList',
       icon: 'fa fa-plug'
+    },
+    {
+      name: 'Form Example',
+      url: '/formExample',
+      icon: 'fa fa-plug'
     }
   ]
 }
