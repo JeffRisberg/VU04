@@ -12,7 +12,7 @@ Vue.use(BootstrapVue)
 export const router = new VueRouter({
   routes,
   mode: 'history',
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior (to, from, savedPosition) {
     if (to.hash) {
       return {
         selector: to.hash

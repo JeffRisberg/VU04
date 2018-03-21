@@ -29,6 +29,11 @@ export default {
       name: 'Form Example',
       url: '/formExample',
       icon: 'fa fa-plug'
+    },
+    {
+      name: 'File Upload',
+      url: '/fileUpload',
+      icon: 'fa fa-plug'
     }
   ]
 }

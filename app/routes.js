@@ -7,6 +7,7 @@ import Summary2 from './pages/Summary2.vue'
 import MajorIncident from './pages/MajorIncident.vue'
 import IncidentList from './pages/IncidentList.vue'
 import FormExample from './pages/FormExample.vue'
+import FileUpload from './pages/FileUpload.vue'
 
 export const routes = [
   {
@@ -57,6 +58,11 @@ export const routes = [
         path: '/formExample',
         name: 'FormExample',
         component: FormExample
+      },
+      {
+        path: '/fileUpload',
+        name: 'FileUpload',
+        component: FileUpload
       }
     ]
   }
