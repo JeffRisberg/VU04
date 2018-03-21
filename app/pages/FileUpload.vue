@@ -42,7 +42,9 @@
 
 <script>
   // swap as you need
-  import { upload } from '../file_upload_service'; // real service
+  // import { upload, BASE_URL } from '../file_upload_service'; // real service
+  import { upload } from '../file_upload_fake_service'; // real service
+
   import { wait } from '../utils';
 
   const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
@@ -80,7 +82,8 @@
       save (formData) {
         // upload data to the server
         this.currentStatus = STATUS_SAVING;
-        const url = `${BASE_URL}/photos/upload`;
+        // const url = `${BASE_URL}/photos/upload`;
+
         upload(formData)
           .then(wait(1500)) // DEV ONLY: wait for 1.5s
           .then(x => {
