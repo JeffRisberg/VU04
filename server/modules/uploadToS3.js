@@ -1,60 +1,47 @@
-const express = require('express')
+const aws = require('aws-sdk')
 const bodyParser = require('body-parser')
-const AWS = require('aws-sdk')
 
-const uploadToS3Router = express.Router({ mergeParams: true })
+const multer = require('multer')
+const multerS3 = require('multer-s3')
+
+const S3_BUCKET_ROOT = 'aisera-document-uploads'
+const S3_BUCKET_KEY_PREFIX = 'document'
 
 let indexNum = 100
+
 module.exports = (app) => {
-  app.use(bodyParser.urlencoded({
-    extended: true,
-  }))
+  app.use(bodyParser.json())
 
-  uploadToS3Router.use(bodyParser.json())
+  var s3 = new aws.S3()
 
-  uploadToS3Router.post('/', function (req, res) {
-    const tenantId = req.params.tenantId
-
-    console.log('uploadingToS3')
-    console.log(req)
-
-    // Bucket names must be unique across all S3 users
-    const myBucket = process.env.S3_BUCKET_ROOT + tenantId
-    const myKey = process.env.S3_BUCKET_KEY_PREFIX + indexNum
-    indexNum++
-
-    console.log(myBucket)
-    console.log(myKey)
-    /*
-    var s3 = new AWS.S3();
-
-    s3.createBucket({ Bucket: myBucket }, function (err, data) {
-
-      if (err) {
-        console.log(err);
-      } else {
-        params = { Bucket: myBucket, Key: myKey, Body: 'Hello!' };
-
-        s3.putObject(params, function (err, data) {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log("Successfully uploaded data to myBucket/myKey");
-          }
-        });
-
-      }
+  var upload = multer({
+    storage: multerS3({
+      s3: s3,
+      bucket: S3_BUCKET_ROOT, // + '/' + S3_BUCKET_KEY_PREFIX + '/' + indexNum,
+      metadata: function (req, file, cb) {
+        cb(null, { fieldName: file.fieldname })
+      },
+      key: function (req, file, cb) {
+        cb(null, Date.now().toString())
+      },
+      ACL: 'public-read'
     })
-    */
-
-    res.status(201)
-    res.send([ {
-      id: 1234, //img,
-      originalName: 'document', // x.name,
-      fileName: 'document', // x.name,
-      url: 'www.aisera.com' // img
-    } ])
   })
 
-  app.use('/api/v1/tenants/:tenantId/uploadToS3', uploadToS3Router)
+  app.post('/api/v1/tenants/:tenantId/uploadToS3', upload.array('photos', 1), function (req, res, next) {
+    console.log('Successfully uploaded ' + req.files.length + ' files!')
+
+    const result = []
+
+    req.files.forEach((file) => {
+      const fileResult = {
+        id: file.key, // img,
+        url: file.location // img
+      }
+      result.push(fileResult)
+    })
+
+    res.send(result)
+    indexNum++
+  })
 }

@@ -24,13 +24,13 @@
         </p>
         <ul class="list-unstyled">
           <li v-for="item in uploadedFiles">
-            <img :src="item.url" class="img-responsive img-thumbnail" :alt="item.originalName">
+            <p>{{item.url}}</p>
           </li>
         </ul>
       </div>
       <!--FAILED-->
       <div v-if="isFailed">
-        <h2>Uploaded failed.</h2>
+        <h2>Upload failed.</h2>
         <p>
           <a href="javascript:void(0)" @click="reset()">Try again</a>
         </p>
@@ -41,11 +41,7 @@
 </template>
 
 <script>
-  // swap as you need
-  import { upload, BASE_URL } from '../file_upload_service'; // real service
-  // import { upload, BASE_URL } from '../file_upload_fake_service'; // fake service
-
-  import { wait } from '../utils';
+  import { upload } from '../file_upload_service';
 
   const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
   export default {
@@ -82,10 +78,8 @@
       save (formData) {
         // upload data to the server
         this.currentStatus = STATUS_SAVING;
-        // const url = `${BASE_URL}/photos/upload`;
 
         upload(formData)
-          .then(wait(1500)) // DEV ONLY: wait for 1.5s
           .then(x => {
             this.uploadedFiles = [].concat(x);
             this.currentStatus = STATUS_SUCCESS;
