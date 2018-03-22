@@ -9,17 +9,9 @@ const state = {
 const mutations = {
   FETCH_ITEMS(status, items) {
     state.items = items;
-    // set the wait flag
   },
   SET_ITEM(state, item) {
     state.item = item;
-    // clear the wait flag
-  },
-  FETCH_ITEMS_SUCCESS(state) {
-    // clear the wait flag
-  },
-  PERSIST_ITEM_SUCCESS(state) {
-    // clear the wait flag
   }
 };
 
@@ -30,14 +22,14 @@ const getters = {
 
 const actions = {
   fetchItems({commit}) {
-    fetch('/api/items', {})
+    fetch('/api/v1/items', {})
       .then(response => response.json())
       .then((json) => {
         commit('FETCH_ITEMS', json.data);
       })
   },
   fetchItem({commit}, id) {
-    fetch('/api/items/' + id, {})
+    fetch('/api/v1/items/' + id, {})
       .then(response => response.json())
       .then((json) => {
         commit('SET_ITEM', json.data);
@@ -57,12 +49,11 @@ const actions = {
     })
       .then(response => response.json())
       .then((json) => {
-        commit('PERSIST_ITEM_SUCCESS', json.data)
         router.push({path: '/items'}) // jump to items route
       })
   },
   addItem({commit}, item) {
-    fetch('/api/items', {
+    fetch('/api/v1/items', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -72,12 +63,11 @@ const actions = {
     })
       .then(response => response.json())
       .then((json) => {
-        commit('PERSIST_ITEM_SUCCESS', json.data)
         router.push({path: '/items'}) // jump to items route
       })
   },
   deleteItem({commit}, item) {
-    fetch('/api/items/' + item.id, {
+    fetch('/api/v1/items/' + item.id, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',

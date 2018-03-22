@@ -77,5 +77,5 @@ module.exports = (app) => {
     })
   })
 
-  app.use('/api/userState', userStateRouter)
+  app.use('/api/v1/userState', userStateRouter)
 }

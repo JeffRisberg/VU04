@@ -50,5 +50,5 @@ module.exports = (app) => {
     }
   )
 
-  app.use('/api/incidents', incidentsRouter)
+  app.use('/api/v1/incidents', incidentsRouter)
 }
