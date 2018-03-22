@@ -1,8 +1,9 @@
 const BASE_URL = 'http://localhost:3001';
 
 function upload (formData) {
-  const photos = formData.getAll('photos');
-  const promises = photos.map((x) => getImage(x)
+  const documents = formData.getAll('documents');
+  console.log(documents)
+  const promises = documents.map((x) => getImage(x)
     .then(img => ({
       id: img,
       originalName: x.name,
