@@ -5,6 +5,7 @@ const app = express()
 const nedb = require('nedb')
 
 const incidents = require('./modules/incidents')
+const uploadToS3 = require('./modules/uploadToS3')
 const userState = require('./modules/userState')
 
 const PATH_STYLES = path.resolve(__dirname, '../app/styles')
@@ -22,6 +23,7 @@ app.incidentsDB = new nedb({filename: 'db-content/incidents', autoload: true})
 app.userStateDB = new nedb({filename: 'db-content/userState', autoload: true})
 
 incidents(app)
+uploadToS3(app)
 userState(app)
 
 const server = app.listen(process.env.PORT || 3000, () => {

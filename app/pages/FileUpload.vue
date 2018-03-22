@@ -43,7 +43,7 @@
 <script>
   // swap as you need
   // import { upload, BASE_URL } from '../file_upload_service'; // real service
-  import { upload } from '../file_upload_fake_service'; // real service
+  import { upload } from '../file_upload_fake_service'; // fake service
 
   import { wait } from '../utils';
 
