@@ -1,32 +1,39 @@
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   mode: 'development',
   entry: './app/main.js',
   output: {
-    path: __dirname + '/dist',
-    filename: 'bundle.js'
+    path: __dirname + "/dist",
+    filename: "bundle.js"
   },
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        use: [ MiniCssExtractPlugin.loader, "css-loader", "sass-loader" ]
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
-      { test: /\.vue$/, loader: 'vue-loader' },
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-      { test: /\.jsx$/, exclude: /node_modules/, loader: "babel-loader" },
-      { test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=/public/icons/[name].[ext]" }
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      },
     ]
   },
-  plugins: [
-    new webpack.IgnorePlugin(/^(buffertools)$/), // unwanted "deeper" dependency
-    new MiniCssExtractPlugin({ filename: 'public/style.css', allChunks: true })
-  ],
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.esm.js'
     }
-  }
+  },
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin()
+  ]
 }
