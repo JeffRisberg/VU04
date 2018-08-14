@@ -1,10 +1,11 @@
+var path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   mode: 'development',
   entry: './app/main.js',
   output: {
-    path: __dirname + "/dist",
+    path: path.resolve(__dirname, './dist'),
     filename: "bundle.js"
   },
   module: {
@@ -24,7 +25,7 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ]
-      },
+      }
     ]
   },
   resolve: {
